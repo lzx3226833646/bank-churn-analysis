@@ -2,6 +2,8 @@
 
 这是我的第一个金融数据练习。用 Python 和 pandas 将 Kaggle 的银行客户数据导入 SQLite，再用 SQL 练习条件筛选、分组和汇总。
 
+[打开 Jupyter Notebook](bank_churn_analysis.ipynb) · **状态：进行中，已整理客户画像，待做流失分析。**
+
 ## 已完成
 
 使用 `Customer-Churn-Records.csv` 中的 10,000 条客户记录，完成了三个查询。
@@ -17,10 +19,18 @@
 ## 本地运行
 
 1. 从 [Kaggle Bank Customer Churn](https://www.kaggle.com/datasets/radheshyamkollipara/bank-customer-churn) 下载 `Customer-Churn-Records.csv`，放进仓库根目录的 `data/`。
-2. 在仓库根目录运行以下命令。本次用 Python 3.13 验证。
+2. 在仓库根目录安装依赖并启动 JupyterLab。本次用 Python 3.13 验证。
 
    ```bash
    python -m pip install -r requirements.txt
+   python -m jupyterlab
+   ```
+
+3. 打开 `bank_churn_analysis.ipynb`，选择 Python 3 内核，从上到下运行。Notebook 使用内存 SQLite，打开 GitHub 页面也可以预览已保存的汇总结果。
+
+需要使用原有命令行流程时，可运行：
+
+   ```bash
    python scripts/import_bank_data.py
    python scripts/query_bank.py
    ```
@@ -31,10 +41,11 @@
 
 | 文件 | 用途 |
 | --- | --- |
+| [bank_churn_analysis.ipynb](bank_churn_analysis.ipynb) | 学习入口，包含数据检查、SQL 客户画像、pandas 核对和下一题 |
 | [scripts/import_bank_data.py](scripts/import_bank_data.py) | 读取 CSV 并导入 SQLite |
 | [scripts/query_bank.py](scripts/query_bank.py) | 运行原有的三项查询 |
-| [requirements.txt](requirements.txt) | pandas 依赖 |
+| [requirements.txt](requirements.txt) | pandas 和 JupyterLab 依赖 |
 
 ## 下一步
 
-用 `Exited` 统计各组的流失人数和流失率，再挑一个对比结果做可视化。现阶段保留初版客户画像练习的范围。
+先在 Notebook 最后一节统计各国的样本人数、流失人数和样本流失率，再用 pandas 核对。之后再考虑绘图、按活跃状态分组与预测。
