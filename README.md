@@ -2,7 +2,7 @@
 
 这是我的第一个金融数据练习。用 Python 和 pandas 将 Kaggle 的银行客户数据导入 SQLite，再用 SQL 练习条件筛选、分组和汇总。
 
-[打开 Jupyter Notebook](bank_churn_analysis.ipynb) · **状态：进行中，已完成国家和产品数的样本流失率对比。**
+[打开 Jupyter Notebook](bank_churn_analysis.ipynb) · **状态：进行中，已完成分组流失率对比和产品数组可视化。**
 
 ## 已完成
 
@@ -21,6 +21,10 @@
 - 按国家分组后，德国的样本流失率为 **32.44%**（814 / 2,509），西班牙为 **16.67%**（413 / 2,477），法国为 **16.17%**（811 / 5,014）。德国和法国的流失人数接近，客户总人数差异解释了两组比例的差距。
 - 在产品数分组中，持有 4 个产品的客户有 **60** 人，60 人均流失，样本流失率为 **100%**。这个组的样本量比持有 1 个或 2 个产品的组小得多。仅凭这组统计无法确定产品数是否导致流失。
 - 两种分组都用 SQLite 计算，再用 pandas 逐值核对。各组客户数分别加总为 **10,000**。
+
+![按产品数统计的样本流失率及各组客户数](assets/product-churn-rate.png)
+
+持有 4 个产品的组样本流失率最高，有 60 人流失。按流失人数排序，持有 1 个产品的组排第一，有 **1,409 人**流失，样本流失率为 **27.71%**。图中 `n` 为每组客户总数。
 
 ## 本地运行
 
@@ -50,8 +54,8 @@
 | [bank_churn_analysis.ipynb](bank_churn_analysis.ipynb) | 数据检查、客户画像、两种流失率分组及 pandas 核对 |
 | [scripts/import_bank_data.py](scripts/import_bank_data.py) | 读取 CSV 并导入 SQLite |
 | [scripts/query_bank.py](scripts/query_bank.py) | 运行原有的三项查询 |
-| [requirements.txt](requirements.txt) | pandas 和 JupyterLab 依赖 |
+| [requirements.txt](requirements.txt) | pandas、Matplotlib 和 JupyterLab 依赖 |
 
 ## 下一步
 
-下一步复习样本量与因果结论的区别，再尝试用图表同时展示每组流失率和客户人数。
+下一步定义年龄段及其区间边界，再按年龄段统计样本人数、流失人数和流失率。
